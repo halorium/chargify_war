@@ -1,5 +1,5 @@
 class Game
-  attr_reader :deck, :player1, :player2
+  attr_reader :deck, :player1, :player2, :wars, :hands
 
   def initialize
     @deck = Deck.new.create_52_card_deck
@@ -8,6 +8,9 @@ class Game
     @table = [ ]
     @hand_count = 0
     @war_count = 0
+
+    @wars = [ ]
+    @hands = [ ]
 
     deal_cards
   end
@@ -45,8 +48,9 @@ class Game
       player1.wins += 1
     end
 
-    # return stats
-    {hand_count: @hand_count, war_count: @war_count}
+    # set stats
+    @hands << @hand_count
+    @wars << @war_count
   end
 
   private
@@ -56,6 +60,9 @@ class Game
     player1.hand.reset
     player2.hand.reset
     @table = [ ]
+    @hand_count = 0
+    @war_count = 0
+
     deal_cards
   end
 
