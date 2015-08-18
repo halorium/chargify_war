@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-require_relative '../lib/player.rb'
-
 describe "Player" do
   before(:all) do
     @player = Player.new

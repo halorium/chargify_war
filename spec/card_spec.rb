@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-require_relative '../lib/card.rb'
-
 describe "Card" do
   before(:all) do
     @card = Card.new(2)

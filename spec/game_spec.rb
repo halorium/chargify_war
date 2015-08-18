@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-require_relative '../lib/game.rb'
-
 describe "Game" do
   before(:all) do
     @game = Game.new
@@ -14,11 +12,12 @@ describe "Game" do
     expect(@game.player2).to be_a(Player)
   end
 
-  it "#play_game will run a game until there is a winner and return a stats hash" do
-    results = @game.play_game
+  it "#play_game will run a game until there is a winner" do
+    @game.play_game
 
-    expect(results).to be_a(Hash)
-    expect(results[:hand_count]).to be_a(Integer)
-    expect(results[:war_count]).to be_a(Integer)
+    expect(@game.wars).to be_a(Array)
+    expect(@game.wars.empty?).to eq(false)
+    expect(@game.hands).to be_a(Array)
+    expect(@game.hands.empty?).to eq(false)
   end
 end
